@@ -176,6 +176,10 @@ camino_dfs = dfs(INICIO, FIN)
 camino_avara = busqueda_avara(INICIO, FIN)
 camino_astar = busqueda_a_estrella(INICIO, FIN)
 
+print("Búsqueda Primero en Profundidad:", camino_dfs)
+print("Búsqueda Avara:", camino_avara)
+print("Búsqueda A*:", camino_astar)
+
 # -------------------------------
 # Animación secuencial
 # -------------------------------
