@@ -21,11 +21,34 @@ def is_draw(board):
     return " " not in board
 
 def evaluate(board):
+    # IA = "O", Humano = "X"
     if check_winner(board, "O"):
         return 10
     elif check_winner(board, "X"):
         return -10
-    return 0
+
+    score = 0
+    # Centro vale más
+    if board[4] == "O":
+        score += 1
+    elif board[4] == "X":
+        score -= 1
+
+    # Revisar combinaciones ganadoras
+    win_conditions = [
+        (0,1,2), (3,4,5), (6,7,8),
+        (0,3,6), (1,4,7), (2,5,8),
+        (0,4,8), (2,4,6)
+    ]
+    for a, b, c in win_conditions:
+        line = [board[a], board[b], board[c]]
+        if line.count("O") == 2 and line.count(" ") == 1:
+            score += 3  # O casi gana
+        if line.count("X") == 2 and line.count(" ") == 1:
+            score -= 3  # X casi gana
+
+    return score
+
 
 def get_available_moves(board):
     return [i for i, cell in enumerate(board) if cell == " "]
