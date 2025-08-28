@@ -1,6 +1,7 @@
 import math
 import random
 
+#El tablero es una lista de strings, imprime tabla por consola
 def print_board(board):
     symbols = [cell if cell != " " else str(i) for i, cell in enumerate(board)]
     print(f"\n{symbols[0]} | {symbols[1]} | {symbols[2]}")
@@ -9,6 +10,7 @@ def print_board(board):
     print("--+---+--")
     print(f"{symbols[6]} | {symbols[7]} | {symbols[8]}\n")
 
+#Chequea que si para un tablero particular gano el player
 def check_winner(board, player):
     win_conditions = [
         (0, 1, 2), (3, 4, 5), (6, 7, 8),
@@ -17,9 +19,12 @@ def check_winner(board, player):
     ]
     return any(all(board[i] == player for i in combo) for combo in win_conditions)
 
+#Si ya no queda espacio en la lista define empate
 def is_draw(board):
     return " " not in board
 
+#Puntua el tabero board, asigna puntaje por tablero ganador, por centro ocupado 
+# y puntua por tablero cercano a ganar
 def evaluate(board):
     # IA = "O", Humano = "X"
     if check_winner(board, "O"):
@@ -49,21 +54,26 @@ def evaluate(board):
 
     return score
 
-
+#Devuelve celdas vacias
 def get_available_moves(board):
     return [i for i, cell in enumerate(board) if cell == " "]
 
-def simulated_annealing_move(board, player="O", temp=10.0, cooling=0.95, steps=100):
+#Algoritmo recocido
+def simulated_annealing_move(board, player="O", temp=10.0, cooling=0.95, steps=20):
+    #Si no hay movimientos posibles, devuelvo none
     possible_moves = get_available_moves(board)
     if not possible_moves:
         return None
 
+    #Busco movimiento aleatorio y lo evaluo
     current_move = random.choice(possible_moves)
     board_copy = board[:]
     board_copy[current_move] = player
     current_score = evaluate(board_copy)
 
     T = temp
+    #Evaluo distintos tableros, si son mejores se eligen 
+    # y si son peores se eligen a veces
     for step in range(steps):
         if T <= 0.01:
             break
@@ -91,7 +101,7 @@ def play_game():
 
     # 🔹 Pedir temperatura al usuario
     try:
-        temp = float(input("Ingrese la temperatura inicial de la IA (ej: 5, 10, 50): "))
+        temp = float(input("Ingrese la temperatura inicial de la IA: "))
     except ValueError:
         temp = 10.0
         print("Valor inválido, se usará temperatura por defecto:", temp)
