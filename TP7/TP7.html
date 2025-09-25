@@ -14359,6 +14359,19 @@ $$
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Cálculo de Entropia Inicial:
+$$ E_{inicial}= - \frac{Cur}{Tot} . log_2(\frac{Cur}{Tot}) - \frac{Def}{Tot} . log_2(\frac{Def}{Tot}) = 0,9403$$</p>
+<p>Cálculo de Ganancias para elección de nodo inicial:
+$$G_{estado}= - \frac{Inc}{Tot} . log_2(\frac{Inc}{Tot}) - \frac{Ava}{Tot} . log_2(\frac{Ava}{Tot})- \frac{Ter}{Tot} . log_2(\frac{Ter}{Tot})-E_{inicial} = 0,637$$</p>
+$$G_{Condicion}=  - \frac{Fue}{Tot} . log_2(\frac{Fue}{Tot}) - \frac{Deb}{Tot} . log_2(\frac{Deb}{Tot})-E_{inicial}=0,0449$$$$G_{Concentracion}= - \frac{Baja}{Tot} . log_2(\frac{Baja}{Tot}) - \frac{Alta}{Tot} . log_2(\frac{Alta}{Tot})-E_{inicial}=0,0597$$$$G_{Ndosis}= - \frac{Baja}{Tot} . log_2(\frac{Baja}{Tot}) - \frac{Alta}{Tot} . log_2(\frac{Alta}{Tot})-E_{inicial}=0,000$$<p>Nota: Bajo o alto se tomaron en funcion del promedio de la columna.</p>
+<p>Consideramos estado como nodo inicial-&gt;Concentracion-&gt;Condición-&gt;dosis</p>
+<p><img src="Images/diagrama_arbol.png" alt="diagrama_arbol.png">
+<img src="Images/salida_terminal.png" alt="diagrama_arbol.png"></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Bibliograf%C3%ADa">Bibliograf&#237;a<a class="anchor-link" href="#Bibliograf%C3%ADa">&#182;</a></h1><p><a href="https://www.academia.edu/8241613/Inteligencia_Aritificial_Un_Enfoque_Moderno_2da_Edici%C3%B3n_Stuart_J_Russell_y_Peter_Norvig">Russell, S. &amp; Norvig, P. (2004) <em>Inteligencia Artificial: Un Enfoque Moderno</em>. Pearson Educación S.A. (2a Ed.) Madrid, España</a></p>
 <p><a href="https://artint.info/3e/html/ArtInt3e.html">Poole, D. &amp; Mackworth, A. (2023) <em>Artificial Intelligence: Foundations of Computational Agents</em>. Cambridge University Press (3a Ed.) Vancouver, Canada</a></p>
 
